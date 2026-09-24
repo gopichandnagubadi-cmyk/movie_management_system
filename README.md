@@ -120,11 +120,12 @@ movie-management-system/
 
 GET, POST, PUT, and DELETE are HTTP methods used by APIs to perform CRUD operations:
 
-Method	Purpose	Example
-GET	Retrieve movies	GET /api/movies
-POST	Add a new movie	POST /api/movies
-PUT	Update an existing movie	PUT /api/movies/mov-1
-DELETE	Remove a movie	DELETE /api/movies/mov-1
+```Method	Purpose	Example
+GET  	  Retrieve movies    	GET /api/movies
+POST	    Add a new movie    	POST /api/movies
+PUT  	  Update an existing movie  	PUT /api/movies/mov-1
+DELETE   Remove a movie  	DELETE /api/movies/mov-1
+```
 
 ## Data Storage
 
