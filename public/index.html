@@ -8,10 +8,9 @@
   <meta property="og:title" content="Movie Management System">
   <meta property="og:description" content="A cinematic movie management system for organizing, searching, filtering, and curating your film catalog with full CRUD operations.">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="C:\Users\gopic\Downloads\potholes file\New folder\movie-management-system\public\css\style.css">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'><path d='M19.82 2H4.18C2.97 2 2 2.97 2 4.18v15.64C2 21.03 2.97 22 4.18 22h15.64c1.21 0 2.18-.97 2.18-2.18V4.18C22 2.97 21.03 2 19.82 2zM7 4h2v3H7V4zm4 0h2v3h-2V4zm4 0h2v3h-2V4zm4 0h1v3h-1V4zM4 4h1v3H4V4zm0 5h16v11H4V9z'/></svg>">
-  <!-- Chart.js for interactive analytics and visualizations -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -42,21 +41,10 @@
           <input 
             type="text" 
             id="headerSearchInput" 
-            placeholder="Search title, actor, genre, language..." 
+            placeholder="Search movie title (e.g. Inter, Dark)..." 
             autocomplete="off"
             aria-label="Search movies dynamically"
           />
-          <!-- Voice Search Button -->
-          <button type="button" class="voice-search-btn" id="voiceSearchBtn" title="Voice Search (Click to speak)" aria-label="Voice Search">
-            <svg class="mic-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-              <line x1="12" y1="19" x2="12" y2="23"></line>
-              <line x1="8" y1="23" x2="16" y2="23"></line>
-            </svg>
-            <span class="mic-pulse-ring"></span>
-          </button>
-          <!-- Clear search button -->
           <button type="button" class="clear-search-btn" id="clearSearchBtn" title="Clear search">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -64,64 +52,15 @@
             </svg>
           </button>
         </div>
-
-        <!-- Advanced Search Toggle Button -->
-        <button type="button" class="btn-adv-search-toggle" id="advancedSearchToggleBtn" title="Toggle Advanced Search (by Title, Actor, Genre, Language, Year)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="4" y1="21" x2="4" y2="14"></line>
-            <line x1="4" y1="10" x2="4" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="12"></line>
-            <line x1="12" y1="8" x2="12" y2="3"></line>
-            <line x1="20" y1="21" x2="20" y2="16"></line>
-            <line x1="20" y1="12" x2="20" y2="3"></line>
-            <line x1="1" y1="14" x2="7" y2="14"></line>
-            <line x1="9" y1="8" x2="15" y2="8"></line>
-            <line x1="17" y1="16" x2="23" y2="16"></line>
-          </svg>
-          <span>Advanced</span>
-        </button>
       </div>
 
       <!-- Header Actions -->
       <div class="header-actions">
-        <!-- Theme Switcher Toggle -->
-        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme (Light / Dark Mode)" aria-label="Toggle Theme">
-          <span class="theme-icon sun-icon" title="Switch to Light Theme">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-          </span>
-          <span class="theme-icon moon-icon" title="Switch to Dark Theme">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </span>
-          <span class="theme-label" id="themeLabelText">Theme</span>
-        </button>
-
         <button type="button" class="btn-intro-sparkle" id="headerTourBtn" onclick="openWelcomeModal(true)" title="Welcome Tour & Quick Overview">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
           </svg>
           <span>Welcome Tour</span>
-        </button>
-
-        <!-- Analytics Dashboard Button -->
-        <button type="button" class="btn-analytics-toggle" id="headerAnalyticsBtn" onclick="toggleAnalyticsView()" title="Movie Analytics & Visual Insights">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="20" x2="18" y2="10"></line>
-            <line x1="12" y1="20" x2="12" y2="4"></line>
-            <line x1="6" y1="20" x2="6" y2="14"></line>
-          </svg>
-          <span>Analytics</span>
         </button>
 
         <button type="button" class="btn btn-primary" id="headerAddMovieBtn" title="Add a new movie to catalog">
@@ -172,7 +111,7 @@
         
         <!-- Left Filter Controls -->
         <div class="filter-left-controls">
-          <!-- View Tabs (All vs Favourites vs Analytics) -->
+          <!-- View Tabs (All vs Favourites) -->
           <div class="filter-tab-buttons" role="tablist">
             <button type="button" class="tab-btn active" id="tabAllMovies" onclick="setFilterTab('all')" role="tab">
               <span>All Movies</span>
@@ -182,14 +121,6 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="#e50914" stroke="#e50914" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
               <span>Favourites</span>
               <span class="tab-badge" id="tabFavCount">5</span>
-            </button>
-            <button type="button" class="tab-btn" id="tabAnalytics" onclick="setFilterTab('analytics')" role="tab" title="View Charts & Metrics">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="20" x2="18" y2="10"></line>
-                <line x1="12" y1="20" x2="12" y2="4"></line>
-                <line x1="6" y1="20" x2="6" y2="14"></line>
-              </svg>
-              <span>Analytics</span>
             </button>
           </div>
 
@@ -248,112 +179,6 @@
 
       </div>
 
-      <!-- Advanced Search Collapsible Panel -->
-      <div class="advanced-search-panel" id="advancedSearchPanel" style="display: none;">
-        <div class="adv-panel-header">
-          <div class="adv-panel-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <h3>Advanced Movie Search</h3>
-            <span class="adv-badge">Multi-Field Filters</span>
-          </div>
-          <button type="button" class="adv-close-btn" id="advSearchCloseBtn" title="Close Advanced Search" aria-label="Close Advanced Search">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-
-        <div class="adv-panel-grid">
-          <!-- 1. Search by Title -->
-          <div class="adv-form-group">
-            <label for="advSearchTitle" class="adv-label">Movie Title</label>
-            <div class="adv-input-wrap">
-              <input type="text" id="advSearchTitle" class="adv-input" placeholder="e.g. Inception, Knight..." />
-            </div>
-          </div>
-
-          <!-- 2. Search by Actor -->
-          <div class="adv-form-group">
-            <label for="advSearchActor" class="adv-label">Actor / Cast</label>
-            <div class="adv-input-wrap">
-              <input type="text" id="advSearchActor" class="adv-input" placeholder="e.g. DiCaprio, Bale, Hanks..." />
-            </div>
-          </div>
-
-          <!-- 3. Search by Genre -->
-          <div class="adv-form-group">
-            <label for="advSearchGenre" class="adv-label">Genre</label>
-            <select id="advSearchGenre" class="adv-select">
-              <option value="all">All Genres</option>
-              <option value="Action">Action</option>
-              <option value="Sci-Fi">Sci-Fi</option>
-              <option value="Drama">Drama</option>
-              <option value="Thriller">Thriller</option>
-              <option value="Comedy">Comedy</option>
-              <option value="Adventure">Adventure</option>
-              <option value="Animation">Animation</option>
-              <option value="Crime">Crime</option>
-              <option value="Mystery">Mystery</option>
-              <option value="Fantasy">Fantasy</option>
-            </select>
-          </div>
-
-          <!-- 4. Search by Language -->
-          <div class="adv-form-group">
-            <label for="advSearchLanguage" class="adv-label">Language</label>
-            <select id="advSearchLanguage" class="adv-select">
-              <option value="all">All Languages</option>
-              <option value="English">English</option>
-              <option value="Hindi">Hindi</option>
-              <option value="Telugu">Telugu</option>
-              <option value="Kannada">Kannada</option>
-              <option value="Korean">Korean</option>
-              <option value="Japanese">Japanese</option>
-              <option value="Spanish">Spanish</option>
-              <option value="French">French</option>
-            </select>
-          </div>
-
-          <!-- 5. Search by Release Year Range -->
-          <div class="adv-form-group adv-year-group">
-            <label class="adv-label">Release Year Range</label>
-            <div class="adv-year-inputs">
-              <input type="number" id="advSearchYearMin" class="adv-input adv-year-input" placeholder="Min (e.g. 1990)" min="1888" max="2100" />
-              <span class="adv-year-sep">to</span>
-              <input type="number" id="advSearchYearMax" class="adv-input adv-year-input" placeholder="Max (e.g. 2026)" min="1888" max="2100" />
-            </div>
-          </div>
-        </div>
-
-        <div class="adv-panel-actions">
-          <div class="adv-action-tip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-            <span>Search simultaneously across title, cast, genre, language, and release year.</span>
-          </div>
-
-          <div class="adv-action-buttons">
-            <button type="button" class="btn btn-secondary" id="advSearchResetBtn">
-              Clear Criteria
-            </button>
-            <button type="button" class="btn btn-primary" id="advSearchApplyBtn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              <span>Apply Advanced Search</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Filter Status & Active Tags Bar -->
       <div class="filter-status-row">
         <div class="filter-tags" id="activeFilterTags">
@@ -363,195 +188,8 @@
       </div>
     </section>
 
-    <!-- ========================================================================
-         ANALYTICS DASHBOARD SECTION (Charts for Genres, Ratings, Release Years)
-         ======================================================================== -->
-    <section class="analytics-dashboard-section" id="analyticsDashboardSection" style="display: none;">
-      <!-- Analytics Header Card -->
-      <div class="analytics-header-card">
-        <div class="analytics-title-area">
-          <div class="analytics-icon-badge">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="20" x2="18" y2="10"></line>
-              <line x1="12" y1="20" x2="12" y2="4"></line>
-              <line x1="6" y1="20" x2="6" y2="14"></line>
-            </svg>
-          </div>
-          <div>
-            <div class="analytics-tag-pill">LIVE METRICS & VISUALIZATIONS</div>
-            <h2 class="analytics-main-title">Movie Catalog Analytics</h2>
-            <p class="analytics-subtitle">Interactive visual breakdowns and statistical insights across genres, audience ratings, and historical release eras.</p>
-          </div>
-        </div>
-
-        <div class="analytics-header-actions">
-          <button type="button" class="btn btn-secondary" onclick="setFilterTab('all')" title="Return to browsing movie cards">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-            <span>Back to Movie Grid</span>
-          </button>
-          <button type="button" class="btn btn-secondary" id="analyticsRefreshBtn" onclick="refreshAnalytics(true)" title="Refresh Analytics Data">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="23 4 23 10 17 10"></polyline>
-              <polyline points="1 20 1 14 7 14"></polyline>
-              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-            </svg>
-            <span>Refresh</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- KPI Summary Cards Row -->
-      <div class="analytics-kpi-grid">
-        <div class="kpi-card">
-          <div class="kpi-header">
-            <span class="kpi-label">Total Catalog Movies</span>
-            <div class="kpi-icon kpi-icon-blue">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
-            </div>
-          </div>
-          <div class="kpi-value" id="kpiTotalMovies">20</div>
-          <div class="kpi-footer">
-            <span class="kpi-subtext" id="kpiFavSubtext">5 Favourites Bookmarked</span>
-          </div>
-        </div>
-
-        <div class="kpi-card">
-          <div class="kpi-header">
-            <span class="kpi-label">Average Catalog Rating</span>
-            <div class="kpi-icon kpi-icon-amber">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            </div>
-          </div>
-          <div class="kpi-value"><span id="kpiAvgRating">8.6</span> <span class="kpi-unit">/ 10</span></div>
-          <div class="kpi-footer">
-            <span class="kpi-subtext" id="kpiHighestRating">Highest: 9.3 (The Shawshank Redemption)</span>
-          </div>
-        </div>
-
-        <div class="kpi-card">
-          <div class="kpi-header">
-            <span class="kpi-label">Dominant Genre</span>
-            <div class="kpi-icon kpi-icon-emerald">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-            </div>
-          </div>
-          <div class="kpi-value" id="kpiTopGenre">Sci-Fi</div>
-          <div class="kpi-footer">
-            <span class="kpi-subtext" id="kpiTopGenreCount">6 titles (30% of catalog)</span>
-          </div>
-        </div>
-
-        <div class="kpi-card">
-          <div class="kpi-header">
-            <span class="kpi-label">Release Era Span</span>
-            <div class="kpi-icon kpi-icon-purple">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            </div>
-          </div>
-          <div class="kpi-value" id="kpiYearSpan">1972 &ndash; 2024</div>
-          <div class="kpi-footer">
-            <span class="kpi-subtext" id="kpiYearSpanYears">52 Years of Cinema</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Charts Row 1: Genres & Ratings (2 Columns) -->
-      <div class="analytics-charts-grid">
-        
-        <!-- Chart 1: Genres Distribution (Doughnut) -->
-        <div class="chart-card">
-          <div class="chart-card-header">
-            <div>
-              <h3 class="chart-card-title">
-                <span class="chart-title-dot dot-genre"></span>
-                Genre Distribution
-              </h3>
-              <p class="chart-card-subtitle">Film titles categorized by cinematic genres</p>
-            </div>
-            <div class="chart-header-badge" id="genreTotalBadge">8 Genres</div>
-          </div>
-          <div class="chart-container-box">
-            <canvas id="genresChart" height="250"></canvas>
-            <div id="genresChartSvgFallback" class="chart-svg-fallback" style="display: none;"></div>
-          </div>
-          <div class="chart-legend-container" id="genresLegendContainer">
-            <!-- Dynamic genre pills with counts -->
-          </div>
-        </div>
-
-        <!-- Chart 2: Ratings Breakdown (Bar Histogram) -->
-        <div class="chart-card">
-          <div class="chart-card-header">
-            <div>
-              <h3 class="chart-card-title">
-                <span class="chart-title-dot dot-rating"></span>
-                Rating Distribution & Quality Tiers
-              </h3>
-              <p class="chart-card-subtitle">Number of movies grouped by rating brackets</p>
-            </div>
-            <div class="chart-header-badge" id="ratingAvgBadge">Avg: 8.6 ★</div>
-          </div>
-          <div class="chart-container-box">
-            <canvas id="ratingsChart" height="250"></canvas>
-            <div id="ratingsChartSvgFallback" class="chart-svg-fallback" style="display: none;"></div>
-          </div>
-          <div class="rating-tiers-summary" id="ratingTiersContainer">
-            <!-- Dynamic rating tiers list -->
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Charts Row 2: Release Years & Timeline (Full Width) -->
-      <div class="analytics-timeline-card">
-        <div class="chart-card-header">
-          <div>
-            <h3 class="chart-card-title">
-              <span class="chart-title-dot dot-year"></span>
-              Release Years & Era Timeline
-            </h3>
-            <p class="chart-card-subtitle">Distribution of catalog releases across chronological years and decades</p>
-          </div>
-          <div class="chart-timeline-controls">
-            <button type="button" class="btn-timeline-toggle active" id="btnTimelineYears" onclick="setTimelineMode('years')">By Year</button>
-            <button type="button" class="btn-timeline-toggle" id="btnTimelineDecades" onclick="setTimelineMode('decades')">By Decade</button>
-          </div>
-        </div>
-        <div class="chart-container-box timeline-box">
-          <canvas id="yearsChart" height="230"></canvas>
-          <div id="yearsChartSvgFallback" class="chart-svg-fallback" style="display: none;"></div>
-        </div>
-
-        <!-- Era Highlights Row -->
-        <div class="era-highlights-grid" id="eraHighlightsGrid">
-          <!-- Era breakdown cards: 1970s, 1990s, 2000s, 2010s, 2020s -->
-        </div>
-      </div>
-
-      <!-- Top 5 Highest Rated Movies Leaderboard -->
-      <div class="analytics-leaderboard-card">
-        <div class="leaderboard-header">
-          <div>
-            <h3 class="chart-card-title">
-              <span class="chart-title-dot dot-gold"></span>
-              Top 5 Highest-Rated Films in Catalog
-            </h3>
-            <p class="chart-card-subtitle">The most critically acclaimed cinematic masterpieces in your collection</p>
-          </div>
-          <span class="leaderboard-badge">Hall of Fame</span>
-        </div>
-        <div class="leaderboard-items" id="leaderboardItemsContainer">
-          <!-- Populated dynamically with medals, poster, title, year, genre, rating -->
-        </div>
-      </div>
-
-    </section>
-
     <!-- Movies Section Title -->
-    <div class="movies-section-title" id="moviesSectionTitle">
+    <div class="movies-section-title">
       <span>Films & Series Catalog</span>
     </div>
 
@@ -816,96 +454,22 @@
             <span class="form-error-msg">Duration is required (e.g. 169 min).</span>
           </div>
 
-          <!-- Starring / Lead Actors -->
-          <div class="form-group full-width" id="movieActorsGroup">
-            <label class="form-label" for="movieActorsInput">
-              <span>Starring / Lead Actors</span>
+          <!-- Poster URL -->
+          <div class="form-group full-width" id="moviePosterGroup">
+            <label class="form-label" for="moviePosterInput">
+              <span>Poster URL (Optional)</span>
             </label>
             <input 
-              type="text" 
-              id="movieActorsInput" 
+              type="url" 
+              id="moviePosterInput" 
               class="form-control" 
-              placeholder="e.g. Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page" 
+              placeholder="https://... (or leave blank for generated cinematic poster)"
             />
-            <span class="form-helper-text">Comma-separated actors for credits and advanced cast searches.</span>
-          </div>
-
-          <!-- Movie Poster: Upload Image File or Enter URL -->
-          <div class="form-group full-width" id="moviePosterGroup">
-            <div class="poster-label-row">
-              <label class="form-label">
-                <span>Movie Poster Image</span>
-              </label>
-              <!-- Poster mode switcher tabs -->
-              <div class="poster-mode-tabs" role="tablist">
-                <button type="button" class="poster-mode-tab active" id="posterModeUploadBtn" onclick="setPosterUploadMode('upload')" role="tab">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="17 8 12 3 7 8"></polyline>
-                    <line x1="12" y1="3" x2="12" y2="15"></line>
-                  </svg>
-                  <span>Upload Image</span>
-                </button>
-                <button type="button" class="poster-mode-tab" id="posterModeUrlBtn" onclick="setPosterUploadMode('url')" role="tab">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                  </svg>
-                  <span>Image URL</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Upload File Section (Drag & Drop + Click) -->
-            <div class="poster-upload-section" id="posterUploadSection">
-              <div class="poster-dropzone" id="posterDropzone" tabindex="0" role="button" aria-label="Drop poster image here or click to browse">
-                <input 
-                  type="file" 
-                  id="moviePosterFileInput" 
-                  accept="image/png, image/jpeg, image/jpg, image/webp, image/gif" 
-                  style="display: none;" 
-                />
-                <div class="dropzone-content">
-                  <div class="dropzone-icon-circle">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                      <polyline points="21 15 16 10 5 21"></polyline>
-                    </svg>
-                  </div>
-                  <div class="dropzone-text-block">
-                    <span class="dropzone-main-text">Drag &amp; drop movie poster here, or <strong class="browse-action">browse files</strong></span>
-                    <span class="dropzone-sub-text">PNG, JPG, WEBP, or GIF • Max 10MB</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Image URL Section -->
-            <div class="poster-url-section" id="posterUrlSection" style="display: none;">
-              <input 
-                type="url" 
-                id="moviePosterInput" 
-                class="form-control" 
-                placeholder="https://... (or leave blank for custom generated poster)"
-              />
-            </div>
-
-            <!-- Poster Preview Box -->
-            <div class="poster-preview-box" id="posterPreviewBox">
-              <div class="poster-preview-wrap">
-                <img id="formPosterPreview" src="" alt="Poster preview" class="poster-preview-img" />
-                <button type="button" class="poster-remove-btn" id="posterRemoveBtn" title="Remove poster image" style="display: none;">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </div>
+            <div class="poster-preview-box">
+              <img id="formPosterPreview" src="" alt="Poster preview" class="poster-preview-img" />
               <div class="poster-preview-hint">
-                <strong id="posterPreviewStatusText">Live Poster Preview</strong>
-                <p id="posterPreviewDetailText">Upload an image file from your device or specify an image URL. If left empty, a cinema poster will be generated automatically.</p>
+                <strong>Live Poster Preview</strong>
+                <p>If left blank or if image fails to load, a custom cinematic poster SVG is dynamically synthesized.</p>
               </div>
             </div>
           </div>
@@ -1041,12 +605,6 @@
             </a>
           </div>
 
-          <!-- Starring Cast Section -->
-          <div class="details-section-label">Starring Cast</div>
-          <p class="details-actors" id="detailsMovieActors">
-            Leading actors and ensemble cast...
-          </p>
-
           <div class="details-section-label">Storyline &amp; Overview</div>
           <p class="details-description" id="detailsMovieDesc">
             Movie storyline description goes here...
@@ -1123,6 +681,6 @@
   </footer>
 
   <!-- Application Script -->
-  <script src="C:\Users\gopic\Downloads\potholes file\New folder\movie-management-system\public\js\app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

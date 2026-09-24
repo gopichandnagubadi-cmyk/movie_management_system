@@ -184,7 +184,7 @@ const SEED_MOVIES = [
     duration: "142 min",
     actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler, Clancy Brown",
     description: "A banker sentenced to prison forms an unlikely friendship and quietly holds onto hope.",
-    poster: "/posters/the-shawshank-redemption.jpg",
+    poster: "C:\Users\gopic\Downloads\potholes file\New folder\movie-management-system\public\posters\the-shawshank-redemption.jpg",
     favourite: true,
     streamingPlatform: "Max",
     streamingUrl: "https://www.max.com/movies/shawshank-redemption/84d26dc6-d4f1-4770-985a-0d85ec157a3e"
@@ -787,7 +787,7 @@ app.use(express.static(publicPath));
 
 // Fallback to index.html for single-page app behavior
 app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Start server
